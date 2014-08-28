@@ -1,5 +1,5 @@
 {
-  "name": "jizura-idlx",
+  "name": "idlx",
   "version": "0.0.4",
   "description": "Parser for Extended Ideographic Description Language (IDLX)",
   "main": "lib/main.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/loveencounterflow/jizura-idlx.git"
+    "url": "https://github.com/loveencounterflow/idlx.git"
   },
   "keywords": [
     "CoffeeScript, parsing, parser combinators"
@@ -16,7 +16,7 @@
   "author": "",
   "license": "BSD-2-Clause",
   "bugs": {
-    "url": "https://github.com/loveencounterflow/jizura-idlx/issues"
+    "url": "https://github.com/loveencounterflow/idlx/issues"
   },
   "dependencies": {
     "coffee-script": "^1.7.1",
