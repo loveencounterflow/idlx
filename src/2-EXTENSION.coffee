@@ -6,7 +6,7 @@
 #...........................................................................................................
 TRM                       = require 'coffeenode-trm'
 rpr                       = TRM.rpr.bind TRM
-badge                     = 'IDLX/XXXXXXXX'
+badge                     = 'IDLX/2-EXTENSION'
 log                       = TRM.get_logger 'plain',     badge
 info                      = TRM.get_logger 'info',      badge
 whisper                   = TRM.get_logger 'whisper',   badge
@@ -29,54 +29,8 @@ CHR                       = require 'coffeenode-chr'
 # OPTIONS
 #-----------------------------------------------------------------------------------------------------------
 @options =
-  # 'assignment-mark':      ':'
-  # 'comment-mark':         '#'
-  # 'comment-text':         /// ^ [^ \n ]* ///
-  # 'finish-formula':       '●'
-  # 'operator-2':           /// (?: [⿰⿱⿴⿵⿶⿷⿸⿹⿺⿻] | \ue01f | &jzr\#xe01f; ) ///
-  # 'operator-1':           /// (?: [\ue018-\ue01c] | &jzr\#xe01[89abc] ) ; ///
   'operator-2':           /// [ ⿰ ⿱ ⿴ ⿵ ⿶ ⿷ ⿸ ⿹ ⿺ ⿻ ◰ ] ///
   'operator-1':           /// [ ≈ ↻ ↔ ↕ ] ///
-
-
-
-  # # #-----------------------------------------------------------------------------------------------------------
-  # # @cjkg_chr_kernel_matcher = ///
-  # #   #{@missing_formula_matcher}
-  # #   | #{@curvy_line_matcher}
-  # #   | #{@ncr_kernel_matcher.source}
-  # #   | #{@cjk_chr_kernel_matcher.source} ///g
-
-  # # #-----------------------------------------------------------------------------------------------------------
-  # # @cjk_chr_matcher         = /// ^ (?:  #{@cjk_chr_kernel_matcher.source} ) ///
-  # # @cjkg_chr_matcher        = /// ^ (?: #{@cjkg_chr_kernel_matcher.source} ) ///
-
-# #===========================================================================================================
-# # GRAMMAR
-# #-----------------------------------------------------------------------------------------------------------
-# @formula         = ( π ) -> return Π.choice      π, @formula_bracketed, @formula_plain, @missing
-# @formula_plain   = ( π ) -> return Π.choice      π, @formula_binary, @formula_unary
-# @operator_1      = ( π ) -> return Π.match       π, @operator_1_matcher
-# @terms           = ( π ) -> return Π.one_or_more π, @term
-# #...........................................................................................................
-# @formula_unary   = ( π ) -> return stash 'formula/plain', Π.sequence π, @operator_1, @term
-# @formula_binary  = ( π ) -> return stash 'formula/plain', Π.sequence π, @operator_2, @term, @term
-
-# #-----------------------------------------------------------------------------------------------------------
-# @formula_bracketed = ( π ) ->
-#   [ left_bracket
-#     operator
-#     terms
-#     right_bracket ] = Π.sequence π, '(', @operator_2, @terms, ')'
-#   #.........................................................................................................
-#   if ( length_of terms ) < 2
-#     bye "operator needs at least two arguments; unable to parse #{rpr π[ 'source' ]}"
-#   #.........................................................................................................
-#   return [ 'formula/bracketed'
-#     left_bracket
-#     operator
-#     terms...
-#     right_bracket ]
 
 
 #===========================================================================================================
@@ -107,8 +61,6 @@ CHR                       = require 'coffeenode-chr'
   #---------------------------------------------------------------------------------------------------------
   G._expression      = -> ƒ.or     ( -> BASE.$finish ), ( -> G.formula )
 
-  # expression_run = G.expression.run
-
   #---------------------------------------------------------------------------------------------------------
   G.expression = ƒ.or -> ƒ.regex /.*/
     .onMatch ( match, state ) ->
@@ -116,8 +68,6 @@ CHR                       = require 'coffeenode-chr'
       throw new Error "IDL expression cannot be empty" if source is ''
       return R                          if source is ( R = BASE.$[ 'finish-formula'   ] )
       return [ R ]                      if source is ( R = BASE.$[ 'missing-formula'  ] )
-      # help simple_formula_matcher
-      help ( rpr source ), simple_formula_matcher.test source
       return CHR.chrs_from_text source  if simple_formula_matcher.test source
       return G._expression.run source
 
@@ -140,9 +90,6 @@ CHR                       = require 'coffeenode-chr'
   # TESTS
   #---------------------------------------------------------------------------------------------------------
   G.tests[ 'unary formula' ] = ( test ) ->
-    # debug $[ 'operator-1' ]
-    # debug $[ 'operator-2' ]
-    # debug ( name for name of G ).sort()
     probes_and_matchers = [
       [ '↔正', [ '↔', '正', ], ]
       [ '↻正', [ '↻', '正', ], ]
@@ -150,7 +97,7 @@ CHR                       = require 'coffeenode-chr'
       ]
     for [ probe, matcher, ] in probes_and_matchers
       result = ƒ.new._delete_grammar_references G.formula_unary.run probe
-      debug result
+      # debug result
       test.eq result, matcher
 
   #---------------------------------------------------------------------------------------------------------
@@ -161,7 +108,7 @@ CHR                       = require 'coffeenode-chr'
       ]
     for [ probe, matcher, ] in probes_and_matchers
       result = ƒ.new._delete_grammar_references G.formula_binary.run probe
-      debug result
+      # debug result
       test.eq result, matcher
 
   #---------------------------------------------------------------------------------------------------------
@@ -175,7 +122,7 @@ CHR                       = require 'coffeenode-chr'
       ]
     for [ probe, matcher, ] in probes_and_matchers
       result = ƒ.new._delete_grammar_references G.formula_plain.run probe
-      debug result
+      # debug result
       test.eq result, matcher
 
   #---------------------------------------------------------------------------------------------------------
@@ -185,7 +132,7 @@ CHR                       = require 'coffeenode-chr'
       ]
     for [ probe, matcher, ] in probes_and_matchers
       result = ƒ.new._delete_grammar_references G.formula_bracketed.run probe
-      debug result
+      # debug result
       test.eq result, matcher
 
   #---------------------------------------------------------------------------------------------------------
@@ -197,13 +144,10 @@ CHR                       = require 'coffeenode-chr'
       [ '⿱丶乂', [ '⿱', '丶', '乂', ], ]
       [ '⿺走⿹◰口戈日', [ '⿺', '走', [ '⿹', [ '◰', '口', '戈' ], '日' ] ], ]
       [ '(⿱北㓁允)', [ '⿱', [ '北', '㓁', '允' ] ], ]
-      # [ '●', [ '⿱', [ '北', '㓁', '允' ] ], ]
-      # [ '〓', [ '⿱', [ '北', '㓁', '允' ] ], ]
-      # [ '⿺走⿹◰口〓日', [ '⿺', '走', [ '⿹', [ '◰', '口', '戈' ], '日' ] ], ]
       ]
     for [ probe, matcher, ] in probes_and_matchers
       result = ƒ.new._delete_grammar_references G.formula.run probe
-      debug result
+      # debug result
       test.eq result, matcher
 
   #---------------------------------------------------------------------------------------------------------
@@ -225,7 +169,7 @@ CHR                       = require 'coffeenode-chr'
       ]
     for [ probe, matcher, ] in probes_and_matchers
       result = ƒ.new._delete_grammar_references G.expression.run probe
-      debug result
+      # debug result
       test.eq result, matcher
 
   #---------------------------------------------------------------------------------------------------------

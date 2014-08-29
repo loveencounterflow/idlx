@@ -6,7 +6,7 @@
 #...........................................................................................................
 TRM                       = require 'coffeenode-trm'
 rpr                       = TRM.rpr.bind TRM
-badge                     = 'IDLX/XXXXXXXX'
+badge                     = 'IDLX/1-BASE'
 log                       = TRM.get_logger 'plain',     badge
 info                      = TRM.get_logger 'info',      badge
 whisper                   = TRM.get_logger 'whisper',   badge
@@ -153,7 +153,7 @@ $new                      = ƒ.new
       ]
     for [ probe, matcher, ] in probes_and_matchers
       result = ƒ.new._delete_grammar_references G.term_similar.run probe
-      debug JSON.stringify result
+      # debug JSON.stringify result
       test.eq result, matcher
 
   #---------------------------------------------------------------------------------------------------------
@@ -164,7 +164,7 @@ $new                      = ƒ.new
     for [ probe, matcher, ] in probes_and_matchers
       result = ƒ.new._delete_grammar_references G.term_precise.run probe
       # debug JSON.stringify result
-      debug result
+      # debug result
       test.eq result, matcher
 
   #---------------------------------------------------------------------------------------------------------
@@ -178,7 +178,7 @@ $new                      = ƒ.new
     for [ probe, matcher, ] in probes_and_matchers
       result = ƒ.new._delete_grammar_references G.formula_2.run probe
       # debug JSON.stringify result
-      debug result
+      # debug result
       test.eq result, matcher
 
   #---------------------------------------------------------------------------------------------------------
@@ -189,7 +189,7 @@ $new                      = ƒ.new
     for [ probe, matcher, ] in probes_and_matchers
       result = ƒ.new._delete_grammar_references G.formula_3.run probe
       # debug JSON.stringify result
-      debug result
+      # debug result
       test.eq result, matcher
 
   #---------------------------------------------------------------------------------------------------------
@@ -204,7 +204,7 @@ $new                      = ƒ.new
     for [ probe, matcher, ] in probes_and_matchers
       result = ƒ.new._delete_grammar_references G.formula.run probe
       # debug JSON.stringify result
-      debug result
+      # debug result
       test.eq result, matcher
 
   #---------------------------------------------------------------------------------------------------------
@@ -219,7 +219,7 @@ $new                      = ƒ.new
     for [ probe, matcher, ] in probes_and_matchers
       result = ƒ.new._delete_grammar_references G.expression.run probe
       # debug JSON.stringify result
-      debug result
+      # debug result
       test.eq result, matcher
 
 
