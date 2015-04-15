@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "coffee-script": "^1.7.1",
-    "coffeenode-bitsnpieces": "0.0.22",
+    "coffeenode-bitsnpieces": "0.1.6",
     "coffeenode-fillin": "^0.1.7",
     "coffeenode-packrattle": "^3.0.1",
     "coffeenode-step": "^0.1.1",
