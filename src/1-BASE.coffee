@@ -36,10 +36,10 @@ $new                      = ƒ.new
     \u3400-\u4dbf
     \u4e00-\u9fff
     \uf900-\ufaff ]
-    | (?: [\ud840-\ud868][\udc00-\udfff]|\ud869[\udc00-\uded6]                       ) # \u(20000)-\u(2a6d6)
-    | (?: [\ud86a-\ud86c][\udc00-\udfff]|\ud869[\udf00-\udfff]|\ud86d[\udc00-\udf3f] ) # \u(2a700)-\u(2b73f)
-    | (?: \ud86d[\udf40-\udfff]|\ud86e[\udc00-\udc1d]                                ) # \u(2b740)-\u(2b81d)
-    | (?: \ud87e[\udc00-\ude1d]                                                      ) # \u(2f800)-\u(2fa1d)
+    | (?: [\ud840-\ud868][\udc00-\udfff]|\ud869[\udc00-\uded6]                       ) # U+20000 - U+2a6d6
+    | (?: [\ud86a-\ud86c][\udc00-\udfff]|\ud869[\udf00-\udfff]|\ud86d[\udc00-\udf3f] ) # U+2a700 - U+2b73f
+    | (?: \ud86d[\udf40-\udfff]|\ud86e[\udc00-\udc1d]                                ) # U+2b740 - U+2b81d
+    | (?: \ud87e[\udc00-\ude1d]                                                      ) # U+2f800 - U+2fa1d
     ///g
 
 
