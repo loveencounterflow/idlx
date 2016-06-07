@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "0-parametrized-grammars.js",
+  "sourceRoot": "../../idlx",
+  "sources": [
+    "src/0-parametrized-grammars.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;;AAAA"
+}

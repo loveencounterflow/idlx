@@ -4,7 +4,10 @@
   "description": "Parser for Extended Ideographic Description Language (IDLX)",
   "main": "lib/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "coffee --map -o lib -c src",
+    "push": "git add . && git commit -m'update' && git push -u origin master",
+    "pub": "npm run build && npm run push && npm version patch && npm publish",
+    "test": "npm run build && node lib/tests.js"
   },
   "repository": {
     "type": "git",
@@ -19,13 +22,13 @@
     "url": "https://github.com/loveencounterflow/idlx/issues"
   },
   "dependencies": {
-    "coffee-script": "^1.10.0",
     "coffeenode-bitsnpieces": "^0.1.8",
     "coffeenode-fillin": "^0.1.7",
     "coffeenode-packrattle": "^3.0.1",
     "coffeenode-step": "^0.1.1",
     "coffeenode-trm": "^0.1.22",
     "coffeenode-types": "^0.1.1",
+    "coffeenode-chr": "^1.0.1",
     "escodegen": "^1.8.0",
     "esprima": "^1.2.2",
     "esquery": "^0.3.0",
