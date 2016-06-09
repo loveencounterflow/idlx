@@ -1,6 +1,6 @@
 {
   "name": "idlx",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Parser for Extended Ideographic Description Language (IDLX)",
   "main": "lib/main.js",
   "scripts": {
