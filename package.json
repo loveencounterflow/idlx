@@ -22,7 +22,7 @@
     "url": "https://github.com/loveencounterflow/idlx/issues"
   },
   "dependencies": {
-    "coffeenode-bitsnpieces": "^0.1.8",
+    "coffeenode-bitsnpieces": "^0.1.6",
     "coffeenode-chr": "^1.0.4",
     "coffeenode-fillin": "^0.1.7",
     "coffeenode-packrattle": "^3.0.1",
