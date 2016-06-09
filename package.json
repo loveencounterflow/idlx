@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "coffeenode-bitsnpieces": "^0.1.8",
-    "coffeenode-chr": "^1.0.3",
+    "coffeenode-chr": "^1.0.4",
     "coffeenode-fillin": "^0.1.7",
     "coffeenode-packrattle": "^3.0.1",
     "coffeenode-step": "^0.1.1",
