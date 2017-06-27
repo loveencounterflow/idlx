@@ -4,26 +4,23 @@
 # njs_path                  = require 'path'
 # njs_fs                    = require 'fs'
 #...........................................................................................................
-TRM                       = require 'coffeenode-trm'
-rpr                       = TRM.rpr.bind TRM
+CND                       = require 'cnd'
+rpr                       = CND.rpr.bind CND
 badge                     = 'IDLX/2-EXTENSION'
-log                       = TRM.get_logger 'plain',     badge
-info                      = TRM.get_logger 'info',      badge
-whisper                   = TRM.get_logger 'whisper',   badge
-alert                     = TRM.get_logger 'alert',     badge
-debug                     = TRM.get_logger 'debug',     badge
-warn                      = TRM.get_logger 'warn',      badge
-help                      = TRM.get_logger 'help',      badge
-echo                      = TRM.echo.bind TRM
-rainbow                   = TRM.rainbow.bind TRM
+log                       = CND.get_logger 'plain',     badge
+info                      = CND.get_logger 'info',      badge
+whisper                   = CND.get_logger 'whisper',   badge
+alert                     = CND.get_logger 'alert',     badge
+debug                     = CND.get_logger 'debug',     badge
+warn                      = CND.get_logger 'warn',      badge
+help                      = CND.get_logger 'help',      badge
+echo                      = CND.echo.bind CND
+rainbow                   = CND.rainbow.bind CND
 #...........................................................................................................
-BNP                       = require 'coffeenode-bitsnpieces'
 ƒ                         = require 'flowmatic'
 $new                      = ƒ.new
-# CHR                       = require './3-chr'
-# XRE                       = require './XRE'
 BASE                      = require './1-BASE'
-CHR                       = require 'coffeenode-chr'
+NCR                       = require 'ncr'
 
 #===========================================================================================================
 # OPTIONS
@@ -68,7 +65,7 @@ CHR                       = require 'coffeenode-chr'
       throw new Error "IDL expression cannot be empty" if source is ''
       return R                          if source is ( R = BASE.$[ 'finish-formula'   ] )
       return [ R ]                      if source is ( R = BASE.$[ 'missing-formula'  ] )
-      return CHR.chrs_from_text source  if simple_formula_matcher.test source
+      return NCR.chrs_from_text source  if simple_formula_matcher.test source
       return G._expression.run source
 
   #---------------------------------------------------------------------------------------------------------

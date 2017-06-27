@@ -3,17 +3,15 @@
 
 
 ############################################################################################################
-TYPES                     = require 'coffeenode-types'
 LODASH                    = require 'lodash'
 #...........................................................................................................
-TRM                       = require 'coffeenode-trm'
-rpr                       = TRM.rpr.bind TRM
+CND                       = require 'cnd'
+rpr                       = CND.rpr.bind CND
 badge                     = 'IDLX'
-warn                      = TRM.get_logger 'warn',    badge
+warn                      = CND.get_logger 'warn',    badge
 #...........................................................................................................
 BASE                      = require './1-BASE'
 EXTENSION                 = require './2-EXTENSION'
-BAP                       = require 'coffeenode-bitsnpieces'
 
 
 #-----------------------------------------------------------------------------------------------------------
@@ -92,12 +90,12 @@ BAP                       = require 'coffeenode-bitsnpieces'
   loop
     idx      += 1
     element   = elements[ idx ]
-    if TYPES.isa_list element
+    if CND.isa_list element
       @_correct_formula_ordering element
       continue
     if @_naive_formula_matcher.test element
       [ elements[ idx ], elements[ idx + 1 ] ] = [ elements[ idx + 1 ], elements[ idx ] ]
-      @_correct_formula_ordering sub_element if TYPES.isa_list ( sub_element = elements[ idx ] )
+      @_correct_formula_ordering sub_element if CND.isa_list ( sub_element = elements[ idx ] )
       idx += 1
     break if idx >= last_idx
   #.........................................................................................................
@@ -118,11 +116,11 @@ BAP                       = require 'coffeenode-bitsnpieces'
 
 #-----------------------------------------------------------------------------------------------------------
 @find_all_cjk_chrs = ( text ) ->
-  return BAP.find_all text, BASE.$[ 'cjk-chr' ]
+  return CND.find_all text, BASE.$[ 'cjk-chr' ]
 
 #-----------------------------------------------------------------------------------------------------------
 @find_all_non_operators = ( text ) ->
-  return BAP.find_all text, BASE.cjkg_chr_matcher
+  return CND.find_all text, BASE.cjkg_chr_matcher
 
 
 

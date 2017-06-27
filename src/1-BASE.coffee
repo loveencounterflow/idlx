@@ -4,20 +4,19 @@
 # njs_path                  = require 'path'
 # njs_fs                    = require 'fs'
 #...........................................................................................................
-TRM                       = require 'coffeenode-trm'
-rpr                       = TRM.rpr.bind TRM
+CND                       = require 'cnd'
+rpr                       = CND.rpr.bind CND
 badge                     = 'IDLX/1-BASE'
-log                       = TRM.get_logger 'plain',     badge
-info                      = TRM.get_logger 'info',      badge
-whisper                   = TRM.get_logger 'whisper',   badge
-alert                     = TRM.get_logger 'alert',     badge
-debug                     = TRM.get_logger 'debug',     badge
-warn                      = TRM.get_logger 'warn',      badge
-help                      = TRM.get_logger 'help',      badge
-echo                      = TRM.echo.bind TRM
-rainbow                   = TRM.rainbow.bind TRM
+log                       = CND.get_logger 'plain',     badge
+info                      = CND.get_logger 'info',      badge
+whisper                   = CND.get_logger 'whisper',   badge
+alert                     = CND.get_logger 'alert',     badge
+debug                     = CND.get_logger 'debug',     badge
+warn                      = CND.get_logger 'warn',      badge
+help                      = CND.get_logger 'help',      badge
+echo                      = CND.echo.bind CND
+rainbow                   = CND.rainbow.bind CND
 #...........................................................................................................
-BNP                       = require 'coffeenode-bitsnpieces'
 ƒ                         = require 'flowmatic'
 $new                      = ƒ.new
 # CHR                       = require './3-chr'
